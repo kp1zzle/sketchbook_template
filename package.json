@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/p5": "^1.6.2",
     "copy-webpack-plugin": "^11.0.0",
+    "glob": "^10.3.3",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
