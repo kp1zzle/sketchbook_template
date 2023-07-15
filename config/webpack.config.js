@@ -4,8 +4,21 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const glob = require('glob')
 const fs = require("fs");
 
+function sortFn(a, b) {
+    const statsObjA = fs.statSync(a);
+    const statsObjB = fs.statSync(b);
+
+    if (statsObjA.birthtimeMs === statsObjB.birthtimeMs) {
+        return 0
+    } else if (statsObjA.birthtimeMs > statsObjB.birthtimeMs) {
+        return 1
+    } else {
+        return -1
+    }
+}
+
 function generate_index() {
-    return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\">" + glob.sync('./src/**.ts').reduce(function(obj, el){
+    return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\">" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
         const name = path.parse(el).name
         const statsObj = fs.statSync(el);
         return obj.concat(`<a href="${name}.html">${name}</a> ${statsObj.birthtime.toLocaleDateString()}<br>`)
