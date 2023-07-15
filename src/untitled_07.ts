@@ -3,18 +3,18 @@ import * as p5 from "p5";
 
 // Description: Circles getting progressively more deformed.
 
-const NUM_LOOPS = 100
-let sketch = (s: p5SVG) => {
+const NUM_LOOPS = 100;
+const sketch = (s: p5SVG) => {
     s.setup = () => {
         s.createCanvas(s.windowWidth , s.windowHeight-4, s.SVG);
-    }
+    };
 
     s.draw = () =>  {
         s.background(255);
-        s.stroke(0)
-        s.strokeWeight(3)
-        s.translate(120, 100)
-        s.angleMode(s.DEGREES)
+        s.stroke(0);
+        s.strokeWeight(3);
+        s.translate(120, 100);
+        s.angleMode(s.DEGREES);
         s.noFill();
 
         for (let i = 0; i < NUM_LOOPS; i++) {
@@ -22,7 +22,7 @@ let sketch = (s: p5SVG) => {
             // strokeWeight(0.7 *sin(i + 4) + 0.7)
 
 
-            let d = []
+            const d = [];
             for (let y = 0; y < 10; y++) {
                 d[y] = Math.floor(Math.random() * 25) * s.sin(Math.floor(Math.random() * 360));
             }
@@ -38,13 +38,13 @@ let sketch = (s: p5SVG) => {
             // bezierVertex(-75 - disturbance,100 - disturbance, -75 - disturbance, -disturbance, 0,0)
             // endShape();
 
-            let r = 75
-            s.curveTightness(-0.5)
+            const r = 75;
+            s.curveTightness(-0.5);
             s.beginShape();
             for(let a = 0; a < i + 3; a++) {
-                let theta = a * 360/i
-                let displacement = Math.floor(Math.random() * 15 - (i/10)) * s.sin(Math.floor(Math.random() * 360));
-                s.curveVertex(r * s.sin(theta) + displacement, r* s.cos(theta) -displacement)
+                const theta = a * 360/i;
+                const displacement = Math.floor(Math.random() * 15 - (i/10)) * s.sin(Math.floor(Math.random() * 360));
+                s.curveVertex(r * s.sin(theta) + displacement, r* s.cos(theta) -displacement);
             }
             // curveVertex(-50 + d[8], 50 + d[9]);
             // curveVertex(0 + d[6], 0 + d[7]);
@@ -60,13 +60,13 @@ let sketch = (s: p5SVG) => {
 
             s.endShape();
 
-            s.translate(200, 0)
+            s.translate(200, 0);
             if (i > 0 && (i+1) % 7 === 0) {
-                s.translate(-1400, 200)
+                s.translate(-1400, 200);
             }
         }
         s.noLoop();
         // save()
-    }
-}
+    };
+};
 const P5 = new p5(sketch, document.body);

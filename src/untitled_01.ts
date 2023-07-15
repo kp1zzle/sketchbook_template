@@ -3,30 +3,30 @@ import * as p5 from "p5";
 
 // Description: Iterative shearing.
 
-let NUM_ROWS = 6
-let ELEMENTS_PER_ROW = 22
+const NUM_ROWS = 6;
+const ELEMENTS_PER_ROW = 22;
 
-let sketch = (s: p5SVG) => {
+const sketch = (s: p5SVG) => {
     s.setup = () => {
         s.createCanvas(s.windowWidth, s.windowHeight, s.SVG);
-    }
+    };
 
     s.draw = () => {
         s.background(0);
         s.noFill();
         s.strokeWeight(1);
-        let palette = [
+        const palette = [
             [255, 204, 100],
             [227, 41, 174],
             [26, 201, 55],
             [59, 13, 212],
             [227, 23, 53],
             [255, 204, 100],
-        ]
+        ];
         for (let a = 0; a < NUM_ROWS; a++) {
             s.stroke(palette[a][0], palette[a][1], palette[a][2]);
             for (let i = 1; i < ELEMENTS_PER_ROW; i++) {
-                let displacement = i * (a + 1);
+                const displacement = i * (a + 1);
                 s.ellipse(100 + 0.5 * displacement, 100 + 5 * displacement, 80 * (a + 1), 80 * (a + 1));
                 if (a + 1 % 2) {
                     s.shearX(s.PI / 45.0 * (a + 1));
@@ -43,10 +43,10 @@ let sketch = (s: p5SVG) => {
             //     }
             // }
             s.resetMatrix();
-            s.translate(0, 100 * ((2 * a) + 1))
+            s.translate(0, 100 * ((2 * a) + 1));
 
         }
         //save()
-    }
-}
+    };
+};
 const P5 = new p5(sketch, document.body);
