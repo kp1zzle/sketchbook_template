@@ -21,8 +21,6 @@ body {
   color: white;
   font-family: RobotoMono-Regular, andale mono, monospace;
   text-align: center;
-
-
 }
 
 br {
@@ -46,7 +44,15 @@ a:active {
 
 .date {
   display: inline;
-  padding: 5px;
+  padding-left: 15px;
+}
+
+h1 {
+  font-family: RobotoMono-Regular, andale mono, monospace;
+  font-size: 4em;
+  color: black;
+  background: linear-gradient(to bottom left, #00c722, #2e22ff);
+  display: inline;
 }
 
 @supports (-webkit-touch-callout: none) {
