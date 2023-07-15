@@ -18,10 +18,17 @@ function sortFn(a, b) {
 }
 
 function generate_index() {
+    const regex = new RegExp('(?<=Description:).*')
     return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\">" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
         const name = path.parse(el).name
         const statsObj = fs.statSync(el);
-        return obj.concat(`<a href="${name}.html">${name}</a> ${statsObj.birthtime.toLocaleDateString()}<br>`)
+        const fileText = fs.readFileSync(el, 'utf8')
+        const matches =  regex.exec(fileText)
+        let description = "No description provided."
+        if (matches !== null && matches.length === 1) {
+             description =  matches[0]
+        }
+        return obj.concat(`<a href="${name}.html">${name}</a><p class="date">${statsObj.birthtime.toLocaleDateString()}</p><p class="description">${description}</p><br>`)
     }, "") + "</body></html>"
 }
 

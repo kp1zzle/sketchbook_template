@@ -13,7 +13,8 @@ body {
   padding: 15px;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  overflow-x: hidden;
   align-items: center;
   justify-content: center;
   background-color: black;
@@ -21,13 +22,19 @@ body {
   font-family: RobotoMono-Regular, andale mono, monospace;
   text-align: center;
 
+
+}
+
+br {
+  line-height: 200%;
 }
 
 a {
   all: unset;
-  font-size: 4em;
+  font-size: 2.5em;
   text-transform: uppercase;
-  font-family: RobotoMono-SemiBold, andale mono, monospace;
+  font-family: RobotoMono-Regular, andale mono, monospace;
+  text-align: left;
 }
 
 a:active {
@@ -35,6 +42,11 @@ a:active {
   /*-webkit-background-clip: text;*/
   /*-webkit-text-fill-color: transparent;*/
   color: black;
+}
+
+.date {
+  display: inline;
+  padding: 5px;
 }
 
 @supports (-webkit-touch-callout: none) {
