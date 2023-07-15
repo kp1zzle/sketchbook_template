@@ -13,7 +13,7 @@ module.exports = {
         {
           from: "public",
           filter: async (filePath) => {
-            return path.basename(filePath) !== "index.html"
+            return path.basename(filePath) !== "page.html"
           }
         }
       ]

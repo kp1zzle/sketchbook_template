@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 15px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  font-family: andale mono, monospace;
+  text-align: center;
+
+}
+
+a {
+  all: unset;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+a:active {
+  background: linear-gradient(to bottom right, #fd9200, #bc43ff);
+  /*-webkit-background-clip: text;*/
+  /*-webkit-text-fill-color: transparent;*/
+  color: black;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    /*noinspection CssInvalidPropertyValue*/
+    height: -webkit-fill-available;
+  }
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
