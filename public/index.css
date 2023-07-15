@@ -47,6 +47,13 @@ a:active {
   padding-left: 15px;
 }
 
+.backButton{
+  position: absolute;
+  left:15px;
+  top:10px;
+  font-size: 1.8em;
+}
+
 h1 {
   font-family: RobotoMono-Regular, andale mono, monospace;
   font-size: 4em;

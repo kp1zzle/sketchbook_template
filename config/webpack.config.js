@@ -31,9 +31,8 @@ function sortFn(a, b) {
 
 function generate_index() {
     const regex = new RegExp('(?<=Description:).*')
-    return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\"><h1>KIERAN'S SKETCHBOOK</h1><br><br>" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
+    return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\"><a class=\"backButton\" href='https://kieran.lol'>BACK</a><h1>KIERAN'S SKETCHBOOK</h1><br><br>" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
         const name = path.parse(el).name
-        const statsObj = fs.statSync(el);
         const fileText = fs.readFileSync(el, 'utf8')
         const matches =  regex.exec(fileText)
         let description = "No description provided."
