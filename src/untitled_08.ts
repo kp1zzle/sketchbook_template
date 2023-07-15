@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Swoosh.
+// Date: 1/26/2023
 
 const NUM_LOOPS = 100;
 const sketch = (s: p5SVG) => {

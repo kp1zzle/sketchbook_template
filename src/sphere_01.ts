@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 // Description: Fly into a 3D wireframe sphere.
+// Date: 3/13/2023
 
 // Canvas
 const canvas = document.querySelector('#three-canvas');

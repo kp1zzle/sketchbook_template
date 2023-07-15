@@ -4,6 +4,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Circle flying off into the galaxy.
+// Date: 1/23/2023
 
 const SQUARE_SIDE = 400;
 const NUM_RECTS = 50;

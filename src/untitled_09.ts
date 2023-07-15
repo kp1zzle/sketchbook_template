@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Square composition with random lines in the center square.
+// Date: 2/11/2023
 
 const sketch = (s: p5SVG) => {
     s.setup = () =>{

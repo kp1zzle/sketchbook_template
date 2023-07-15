@@ -4,6 +4,7 @@ import * as p5 from "p5";
 import {convertToIsometric} from "./helpers/isometric";
 
 // Description: Isometric plane made of squares.
+// Date: 1/30/2023
 
 let THETA = 30;
 let ANIMATION_STEP = 0.1;

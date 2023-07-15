@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: When does a square become a circle?
+// Date: 2/28/2023
 
 let ANIMATION_STEP = 0;
 let MULT = 0.1;

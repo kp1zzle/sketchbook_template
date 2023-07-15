@@ -4,6 +4,7 @@ import * as p5 from "p5";
 import {IsoCube} from "./helpers/isometric";
 
 // Description: Terrain of white cubes.
+// Date: 2/11/2023
 
 const THETA = 30;
 const ANIMATION_STEP = 0.1;

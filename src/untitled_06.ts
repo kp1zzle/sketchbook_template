@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Alternating squares made of lines in a square composition.
+// Date: 1/25/2023
 
 const WIDTH_BOXES = 10;
 const HEIGHT_BOXES = 10;

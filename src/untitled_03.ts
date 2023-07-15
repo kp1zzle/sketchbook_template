@@ -3,6 +3,7 @@ import * as p5 from "p5";
 import Flatten from "@flatten-js/core";
 
 // Description: Two triangles connected by lines. Click to move the triangle.
+// Date: 1/24/2023
 
 const NUM_POINTS = 150;
 let INNER_TRIANGLE =  [

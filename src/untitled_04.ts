@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Parallel swooshing lines.
+// Date: 1/24/2023
 
 const NUM_LINES = 100;
 const COLORS = [

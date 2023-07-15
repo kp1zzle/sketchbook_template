@@ -4,13 +4,25 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const glob = require('glob')
 const fs = require("fs");
 
-function sortFn(a, b) {
-    const statsObjA = fs.statSync(a);
-    const statsObjB = fs.statSync(b);
+function determineDateForFile(path) {
+    const regex = new RegExp('(?<=Date:).*')
+    const fileTextA = fs.readFileSync(path, 'utf8')
+    const matchesA = regex.exec(fileTextA)
+    if (matchesA != null) {
+        return new Date(Date.parse(matchesA[0]))
+    } else {
+        const statsObjA = fs.statSync(path);
+        return statsObjA.birthtime
+    }
+}
 
-    if (statsObjA.birthtimeMs === statsObjB.birthtimeMs) {
+function sortFn(a, b) {
+    const dateA = determineDateForFile(a)
+    const dateB = determineDateForFile(b)
+
+    if (dateA.valueOf() === dateB.valueOf()) {
         return 0
-    } else if (statsObjA.birthtimeMs > statsObjB.birthtimeMs) {
+    } else if (dateA.valueOf() > dateB.valueOf()) {
         return 1
     } else {
         return -1
@@ -28,7 +40,7 @@ function generate_index() {
         if (matches !== null && matches.length === 1) {
              description =  matches[0]
         }
-        return obj.concat(`<a href="${name}.html">${name}</a><p class="date">${statsObj.birthtime.toLocaleDateString()}</p><p class="description">${description}</p><br>`)
+        return obj.concat(`<a href="${name}.html">${name}</a><p class="date">${determineDateForFile(el).toLocaleDateString()}</p><p class="description">${description}</p><br>`)
     }, "") + "</body></html>"
 }
 

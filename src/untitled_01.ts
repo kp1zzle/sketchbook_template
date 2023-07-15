@@ -2,6 +2,7 @@ import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 
 // Description: Iterative shearing.
+// Date: 10/17/2022
 
 const NUM_ROWS = 6;
 const ELEMENTS_PER_ROW = 22;

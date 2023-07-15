@@ -4,6 +4,7 @@ import * as p5 from "p5";
 import {convertToIsometric} from "./helpers/isometric";
 
 // Description: Window with an isometric sine wave.
+// Date: 1/28/2023
 
 const THETHA = 30;
 

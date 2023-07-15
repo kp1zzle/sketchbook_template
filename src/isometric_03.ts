@@ -4,6 +4,7 @@ import * as p5 from "p5";
 import {convertToIsometric} from "./helpers/isometric";
 
 // Description: Rainbow stairs made of cubes.
+// Date: 2/7/2023
 
 let THETA = 30;
 let ANIMATION_STEP = 0.1;
