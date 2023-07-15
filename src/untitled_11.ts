@@ -2,6 +2,8 @@ import * as p5 from 'p5';
 import init, { p5SVG } from 'p5.js-svg'
 import {defaultKeys} from "./helpers/key_pressed";
 
+// Description: Wavy lines get farther apart over time.
+
 init(p5);
 let t = 0;
 let space_between = 3;
