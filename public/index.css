@@ -1,3 +1,13 @@
+@font-face {
+  font-family: RobotoMono-Regular;
+  src: url(RobotoMono-Regular.ttf);
+}
+
+@font-face {
+  font-family: RobotoMono-SemiBold;
+  src: url(RobotoMono-SemiBold.ttf);
+}
+
 body {
   margin: 0;
   padding: 15px;
@@ -8,7 +18,7 @@ body {
   justify-content: center;
   background-color: black;
   color: white;
-  font-family: andale mono, monospace;
+  font-family: RobotoMono-Regular, andale mono, monospace;
   text-align: center;
 
 }
@@ -17,7 +27,7 @@ a {
   all: unset;
   font-size: 4em;
   text-transform: uppercase;
-  font-weight: bold;
+  font-family: RobotoMono-SemiBold, andale mono, monospace;
 }
 
 a:active {
