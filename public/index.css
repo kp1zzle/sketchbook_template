@@ -35,11 +35,17 @@ a {
   text-align: left;
 }
 
+a:hover {
+  outline-style: solid;
+  outline-width: thin;
+}
+
 a:active {
   background: linear-gradient(to bottom right, #fd9200, #bc43ff);
   /*-webkit-background-clip: text;*/
   /*-webkit-text-fill-color: transparent;*/
   color: black;
+  outline-style: none;
 }
 
 .date {
