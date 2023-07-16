@@ -31,7 +31,7 @@ function sortFn(a, b) {
 
 function generate_index() {
     const regex = new RegExp('(?<=Description:).*')
-    return "<html><title>p5 sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\"><a class=\"backButton\" href='https://kieran.lol'>BACK</a><h1>KIERAN'S SKETCHBOOK</h1><br><br>" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
+    return "<html><title>kieran's sketchbook</title><body><link rel=\"stylesheet\" href=\"./index.css\"><a class=\"backButton\" href='https://kieran.lol'>BACK</a><h1>KIERAN'S SKETCHBOOK</h1><br><br>" + glob.sync('./src/**.ts').sort(sortFn).reverse().reduce(function(obj, el){
         const name = path.parse(el).name
         const fileText = fs.readFileSync(el, 'utf8')
         const matches =  regex.exec(fileText)
@@ -80,6 +80,9 @@ module.exports = {
     obj.push(
         new HtmlWebpackPlugin({
                 template: "./public/page.html",
+                templateParameters: {
+                    title: name,
+                },
                 inject: "body",
                 publicPath: "./",
                 filename: `${name}.html`,
