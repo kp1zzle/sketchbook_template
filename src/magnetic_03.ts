@@ -3,7 +3,7 @@ import * as P5 from "p5";
 import {defaultKeys} from "./helpers/key_pressed";
 import {point} from "./helpers/point";
 
-// Description: Each line has its own direction, can be changed by moving cursor near line.
+// Description: Magnetic 1 and 2 overlayed on each other.
 // Date: 07/20/2023 12:02:00Z
 
 init(P5);
@@ -11,7 +11,7 @@ const NUM_LINES = 50;
 const NUM_ROWS: number = 50;
 let layer1Point = {x: window.innerWidth / 2, y: window.innerHeight / 2};
 const layer2Points: point[] = Array(NUM_ROWS * NUM_LINES).fill({x: window.innerWidth / 2, y: window.innerHeight / 2});
-const radius: number = 100
+let radius: number = 100
 
 const sketch = (s: p5SVG) => {
     s.setup = () => {
@@ -75,5 +75,12 @@ const sketch = (s: p5SVG) => {
         layer1Point = {x: s.mouseX, y: s.mouseY};
     };
 
+    s.mouseWheel = (event: {delta: number}) => {
+
+        radius -= event.delta/10;
+        if (radius <= 0) {
+            radius = 0;
+        }
+    };
 };
 new P5(sketch, document.body);
