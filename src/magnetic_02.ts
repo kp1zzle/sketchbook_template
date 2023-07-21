@@ -3,16 +3,14 @@ import * as P5 from "p5";
 import {defaultKeys} from "./helpers/key_pressed";
 import {point} from "./helpers/point";
 
-// Description: Magnetic field diagram, all lines point to one point.
-// Date: 07/19/2023
+// Description: Each line has its own direction, can be changed by moving cursor near line.
+// Date: 07/20/2023 12:01:00Z
 
 init(P5);
 const NUM_LINES = 50;
 const NUM_ROWS: number = 50;
-let towardsPt: point = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-};
+const points: point[] = Array(NUM_ROWS * NUM_LINES).fill({x: window.innerWidth / 2, y: window.innerHeight / 2});
+const radius: number = 100
 
 const sketch = (s: p5SVG) => {
     s.setup = () => {
@@ -26,7 +24,16 @@ const sketch = (s: p5SVG) => {
             return{x: start.x + d*(vec.x/dist), y: start.y + d*(vec.y/dist)};
         }
 
-        towardsPt = {x: s.mouseX, y: s.mouseY};
+        function determineIndex(row: number, column: number): number {
+            return row * NUM_LINES + column
+        }
+
+        function dist(start: point, end: point): number {
+            const vec: point = {x: end.x-start.x, y: end.y-start.y};
+            return s.sqrt((vec.x*vec.x) + (vec.y*vec.y));
+        }
+
+        // towardsPt = {x: s.mouseX, y: s.mouseY};
 
         s.background(0);
         s.stroke(255);
@@ -36,9 +43,14 @@ const sketch = (s: p5SVG) => {
 
         for (let row = 0; row < NUM_ROWS; row++) {
             for (let i = 0; i < NUM_LINES; i++) {
+                const towardsPt = points[determineIndex(row, i)]
                 const centerPt = {x: leftCorner.x + i * 15, y: leftCorner.y + 15 * row};
                 const endPt = endPointAlongLineAtDist(centerPt, towardsPt, 5);
                 const startPt = endPointAlongLineAtDist(centerPt, towardsPt, -5);
+
+                if (dist(centerPt, {x: s.mouseX, y: s.mouseY}) <= radius) {
+                    points[determineIndex(row, i)] = {x: s.mouseX, y: s.mouseY}
+                }
 
                 s.stroke(255);
                 s.line(startPt.x, startPt.y, endPt.x, endPt.y);
@@ -52,8 +64,5 @@ const sketch = (s: p5SVG) => {
         defaultKeys(s);
     };
 
-    s.mouseClicked = () => {
-        towardsPt = {x: s.mouseX, y: s.mouseY};
-    };
 };
 new P5(sketch, document.body);
