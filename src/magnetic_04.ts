@@ -45,7 +45,7 @@ const sketch = (s: p5SVG) => {
         for (let row = 0; row < NUM_ROWS; row++) {
             for (let i = 0; i < NUM_LINES; i++) {
                 const centerPt = {x: leftCorner.x + i * 15, y: leftCorner.y + 15 * row};
-                if (dist(centerPt, {x: s.mouseX, y: s.mouseY}) <= radius) {
+                if (s.mouseIsPressed && dist(centerPt, {x: s.mouseX, y: s.mouseY}) <= radius) {
                     points[determineIndex(row, i)] = {x: s.mouseX, y: s.mouseY};
                 }
 
