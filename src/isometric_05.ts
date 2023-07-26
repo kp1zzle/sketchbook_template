@@ -2,6 +2,7 @@
 import {p5SVG} from "p5.js-svg";
 import * as p5 from "p5";
 import {IsoCube} from "./helpers/isometric";
+import {defaultKeys} from "./helpers/key_pressed";
 
 // Description: Terrain of white cubes.
 // Date: 2/11/2023
@@ -18,7 +19,7 @@ const COLORS = [
 const CUBE_LEN = 10;
 const sketch = (s: p5SVG) => {
     s.setup = () => {
-        s.createCanvas(s.windowWidth , s.windowHeight-4, s.SVG);
+        s.createCanvas(s.windowWidth , s.windowHeight-4);
     };
 
     s.draw = () =>  {
@@ -45,8 +46,11 @@ const sketch = (s: p5SVG) => {
             IsoCube(s, points[i].x,  points[i].y, points[i].z, CUBE_LEN, THETA);
         }
 
-        s.noLoop();
         // save();
+    };
+
+    s.keyPressed = () => {
+        defaultKeys(s);
     };
 
     function heightFunc(x: number, y: number) {
