@@ -8,13 +8,13 @@ import QuickSettings from "quicksettings";
 // Description: Varying sized circles in a grid.
 // Date: 07/26/2023 12:03:00Z
 
-let q = {
+const q = {
     numPts: 75,
     spacing: 10,
     zoom: 15,
-    color1: '#018f14',
-    color2: '#002afd',
-}
+    color1: "#018f14",
+    color2: "#002afd",
+};
 const settings = QuickSettings.create(10, 10, "settings");
 settings.hide();
 settings.bindNumber("numPts", 0, 1000, q.numPts, 1,  q);
@@ -31,30 +31,30 @@ const sketch = (s: p5SVG) => {
 
         s.background(0);
         s.noFill();
-        s.translate(s.windowWidth/2 - (q.numPts * q.spacing / 2) , s.windowHeight/2 - (q.numPts/11*14 * q.spacing / 2))
+        s.translate(s.windowWidth/2 - (q.numPts * q.spacing / 2) , s.windowHeight/2 - (q.numPts/11*14 * q.spacing / 2));
 
         s.stroke(q.color1);
         pointsOnGrid(q.numPts, q.numPts/11*14, (x: number, y: number) => {
-            let pt = pointCoords(q.spacing, x, y);
-            s.circle(pt.x, pt.y, s.noise(x/q.zoom, y/q.zoom)*q.spacing/2)
-        })
+            const pt = pointCoords(q.spacing, x, y);
+            s.circle(pt.x, pt.y, s.noise(x/q.zoom, y/q.zoom)*q.spacing/2);
+        });
 
         s.translate(q.spacing/2, q.spacing/2);
-        s.stroke(q.color2)
+        s.stroke(q.color2);
         pointsOnGrid(q.numPts, q.numPts/11*14,(x: number, y: number) => {
-            let pt = pointCoords(q.spacing, x, y);
-            s.circle(pt.x, pt.y,  q.spacing/2 - s.noise(x/q.zoom, y/q.zoom)*q.spacing/2)
-        })
+            const pt = pointCoords(q.spacing, x, y);
+            s.circle(pt.x, pt.y,  q.spacing/2 - s.noise(x/q.zoom, y/q.zoom)*q.spacing/2);
+        });
     };
 
     s.mouseClicked = () => {
-    }
+    };
 
     s.keyPressed = () => {
         defaultKeys(s);
 
         if (s.keyCode === s.ESCAPE) {
-            settings.toggleVisibility()
+            settings.toggleVisibility();
         }
     };
 
