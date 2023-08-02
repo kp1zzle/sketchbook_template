@@ -15,6 +15,7 @@ const q = {
     color1: "#018f14",
     color2: "#002afd",
     zoom: 100,
+    weight: 1,
 };
 const settings = QuickSettings.create(10, 10, "settings");
 settings.hide();
@@ -24,6 +25,7 @@ settings.bindRange("lineLen", 0, 2000, q.lineLen, 1,  q);
 settings.bindRange("ptsPerLine", 0, 100, q.ptsPerLine, 1,  q);
 settings.bindRange("disturbance", 0, 300, q.disturbance, 1,  q);
 settings.bindRange("zoom", 0, 300, q.zoom, 1,  q);
+settings.bindRange("weight", 0, 10, q.weight, 0.1, q);
 
 init(P5);
 const sketch = (s: p5SVG) => {
@@ -36,6 +38,7 @@ const sketch = (s: p5SVG) => {
         s.translate(s.windowWidth/2 - q.numLines*q.spacing/2, s.windowHeight/2 - q.lineLen/2);
         s.noFill();
         s.stroke(q.color1);
+        s.strokeWeight(q.weight);
         for (let i = 0; i < q.numLines; i++) {
             s.beginShape();
             for (let j = 0; j < q.ptsPerLine; j++) {
