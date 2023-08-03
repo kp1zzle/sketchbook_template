@@ -1,15 +1,24 @@
 import {p5SVG} from "p5.js-svg";
+import * as P5 from "p5";
 
 export function exportPNG(s: p5SVG) {
     const filename = (new Date).toISOString();
     s.save(filename.concat(".png"));
 }
 
-export function exportSVG(s: p5SVG) {
+export function exportSVG(s: p5SVG, sketch: (s: p5SVG) => void) {
     const filename = (new Date).toISOString();
-    s.createCanvas(window.innerWidth, window.innerHeight, s.SVG);
-    s.draw();
-    s.save(filename.concat(".svg"));
-    s.createCanvas(window.innerWidth, window.innerHeight);
-    s.draw();
+    const div = document.createElement("div");
+    div.id = "hidden_div";
+    div.style.display = "none";
+    document.body.appendChild(div);
+    const svg = new P5(sketch, div);
+    svg.setup = () => {
+        svg.createCanvas(s.windowWidth, s.windowHeight, s.SVG);
+    };
+    svg.setup();
+    svg.draw();
+    svg.save(filename.concat(".svg"));
+    svg.remove();
+    div.remove();
 }

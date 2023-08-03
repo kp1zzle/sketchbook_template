@@ -10,7 +10,7 @@ init(P5);
 const NUM_LINES = 50;
 const NUM_ROWS: number = 50;
 const points: point[] = Array(NUM_ROWS * NUM_LINES).fill({x: window.innerWidth / 2, y: window.innerHeight / 2});
-const radius: number = 100
+const radius: number = 100;
 
 const sketch = (s: p5SVG) => {
     s.setup = () => {
@@ -25,7 +25,7 @@ const sketch = (s: p5SVG) => {
         }
 
         function determineIndex(row: number, column: number): number {
-            return row * NUM_LINES + column
+            return row * NUM_LINES + column;
         }
 
         function dist(start: point, end: point): number {
@@ -43,13 +43,13 @@ const sketch = (s: p5SVG) => {
 
         for (let row = 0; row < NUM_ROWS; row++) {
             for (let i = 0; i < NUM_LINES; i++) {
-                const towardsPt = points[determineIndex(row, i)]
+                const towardsPt = points[determineIndex(row, i)];
                 const centerPt = {x: leftCorner.x + i * 15, y: leftCorner.y + 15 * row};
                 const endPt = endPointAlongLineAtDist(centerPt, towardsPt, 5);
                 const startPt = endPointAlongLineAtDist(centerPt, towardsPt, -5);
 
                 if (dist(centerPt, {x: s.mouseX, y: s.mouseY}) <= radius) {
-                    points[determineIndex(row, i)] = {x: s.mouseX, y: s.mouseY}
+                    points[determineIndex(row, i)] = {x: s.mouseX, y: s.mouseY};
                 }
 
                 s.stroke(255);
@@ -61,7 +61,7 @@ const sketch = (s: p5SVG) => {
     };
 
     s.keyPressed = () => {
-        defaultKeys(s);
+        defaultKeys(s, sketch);
     };
 
 };

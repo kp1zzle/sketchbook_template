@@ -50,7 +50,7 @@ const sketch = (s: p5SVG) => {
     };
 
     s.keyPressed = () => {
-        defaultKeys(s);
+        defaultKeys(s, sketch);
     };
 
     function heightFunc(x: number, y: number) {

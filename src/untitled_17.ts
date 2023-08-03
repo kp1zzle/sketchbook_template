@@ -74,7 +74,7 @@ const sketch = (s: p5SVG) => {
     };
 
     s.keyPressed = () => {
-        defaultKeys(s);
+        defaultKeys(s, sketch);
 
         if (s.keyCode === s.ESCAPE) {
             settings.toggleVisibility();
