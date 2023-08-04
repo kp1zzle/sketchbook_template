@@ -14,7 +14,7 @@ export function exportSVG(s: p5SVG, sketch: (s: p5SVG) => void) {
     document.body.appendChild(div);
     const svg = new P5(sketch, div);
     svg.setup = () => {
-        svg.createCanvas(s.windowWidth, s.windowHeight, s.SVG);
+        svg.createCanvas(s.width, s.height, s.SVG);
     };
     svg.setup();
     svg.draw();

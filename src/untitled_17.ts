@@ -49,7 +49,7 @@ const sketch = (s: p5SVG) => {
 
         s.background(q.background);
         s.noFill();
-        s.translate(s.windowWidth/2 - (q.numPts * q.spacing / 2) , s.windowHeight/2 - (q.numPts/11*14 * q.spacing / 2));
+        s.translate(s.width/2 - (q.numPts * q.spacing / 2) , s.height/2 - (q.numPts/11*14 * q.spacing / 2));
 
         s.stroke(q.color1);
         pointsOnGrid(q.numPts, q.numPts/11*14, (x: number, y: number) => {
