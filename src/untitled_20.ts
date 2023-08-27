@@ -5,7 +5,7 @@ import {pointCoords, pointsOnGrid} from "./helpers/grid";
 import QuickSettings from "quicksettings";
 
 // Description: Untitled 17 but crosses instead of circles
-// Date: 08/28/2023 12:03:00Z
+// Date: 08/26/2023 12:03:00Z
 
 const q = {
     numPts: 75,
@@ -56,9 +56,9 @@ const sketch = (s: p5SVG) => {
             const pt = pointCoords(q.spacing, x, y);
             const len = determineCircleD(x, y, false);
             // vertical line
-            s.line(pt.x, pt.y - len/2, pt.x, pt.y + len/2)
+            s.line(pt.x, pt.y - len/2, pt.x, pt.y + len/2);
             // horizontal line
-            s.line(pt.x - len/2, pt.y, pt.x + len/2, pt.y)
+            s.line(pt.x - len/2, pt.y, pt.x + len/2, pt.y);
         });
     };
 
