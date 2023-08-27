@@ -3,6 +3,7 @@ import * as P5 from "p5";
 import {defaultKeys} from "./helpers/key_pressed";
 import {pointCoords, pointsOnGrid} from "./helpers/grid";
 import QuickSettings from "quicksettings";
+import {setAspectRatioStr} from "./helpers/aspect_ratio";
 
 // Description: Crosses and circles
 // Date: 08/26/2023 12:04:00Z
@@ -35,6 +36,7 @@ init(P5);
 const sketch = (s: p5SVG) => {
     s.setup = () => {
         s.createCanvas(s.windowWidth, s.windowHeight);
+        settings.addText("Aspect Ratio", "11x14", (aspect: string) => { setAspectRatioStr(s, aspect); });
         settings.addButton("Randomize Noise", () => {
             s.noiseSeed();
         });
