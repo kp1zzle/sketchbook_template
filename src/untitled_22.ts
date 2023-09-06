@@ -16,6 +16,7 @@ const q = {
     disturbance: 100,
     color1: "#018f14",
     color2: "#002afd",
+    color3: "#fd001e",
     zoom: 100,
     weight: 1,
     gradDivisor: 3,
@@ -71,10 +72,12 @@ const sketch = (s: p5SVG) => {
         s.strokeWeight(q.weight);
 
         for (let i = 0; i < q.numPatterns; i++) {
-            if (i % 2 === 0) {
+            if (i % 3 === 0) {
                 s.stroke(q.color1);
-            } else {
+            } else if (i % 3 === 1) {
                 s.stroke(q.color2);
+            } else {
+                s.stroke(q.color3);
             }
             s.translate(s.width/2, s.height/2);
             s.rotate(180/q.numPatterns);
