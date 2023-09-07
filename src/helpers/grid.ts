@@ -13,5 +13,9 @@ export function pointsOnSquareGrid(x: number, callbackAtPt: (x: number, y: numbe
 }
 
 export function pointCoords(spacing: number, x: number, y: number): point {
-    return {x: x * spacing, y: y * spacing}
+    return {x: x * spacing, y: y * spacing};
+}
+
+export function pointCoordsUnevenSpacing(xSpacing: number, ySpacing: number, x: number, y: number): point {
+    return {x: x * xSpacing, y: y * ySpacing};
 }
