@@ -4,7 +4,7 @@ import {defaultKeys} from "./helpers/key_pressed";
 import QuickSettings from "quicksettings";
 import {setAspectRatioStr} from "./helpers/aspect_ratio";
 
-// Description: 
+// Description: Gradient made of squares of randomly placed points.
 // Date: 9/27/23 22:11:43Z
 
 const q = {
