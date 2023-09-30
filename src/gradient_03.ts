@@ -3,8 +3,7 @@ import * as P5 from "p5";
 import {defaultKeys} from "./helpers/key_pressed";
 import QuickSettings from "quicksettings";
 import {setAspectRatioStr} from "./helpers/aspect_ratio";
-import {pointCoords} from "./helpers/grid";
-import {defaultCoordFn, defaultDiamondShapeFn, gradient, verticalGradLenFn} from "./helpers/gradient";
+import {defaultCoordFn, defaultDiamondShapeFn, gradient, linearGradLenFn} from "./helpers/gradient";
 
 // Description: Diamond grid increasing in size each row.
 // Date: 9/28/23 22:07:03Z
@@ -14,6 +13,7 @@ const q = {
     rows: 100,
     spacing:8,
     thickest: 1,
+    angle: 0,
 };
 const settings = QuickSettings.create(10, 10, "settings");
 settings.hide();
@@ -21,6 +21,7 @@ settings.bindRange("columns", 0, 1000, q.columns, 1, q);
 settings.bindRange("rows", 0, 1000, q.rows, 1, q);
 settings.bindRange("spacing", 0, 50, q.spacing, 1, q);
 settings.bindRange("thickest", 0, 10, q.thickest, 0.25, q);
+settings.bindRange("angle", 0, 360, q.angle, 1, q);
 
 init(P5);
 const sketch = (s: p5SVG) => {
@@ -41,10 +42,10 @@ const sketch = (s: p5SVG) => {
         gradient(
             q.columns,
             q.rows,
-            verticalGradLenFn(q.rows, q.spacing, q.thickest),
+            linearGradLenFn(q.columns, q.rows, q.spacing, q.thickest, q.angle),
             defaultCoordFn(q.spacing),
             defaultDiamondShapeFn(s)
-            )
+        );
     };
 
     s.mouseClicked = () => {
@@ -53,7 +54,7 @@ const sketch = (s: p5SVG) => {
     s.keyPressed = () => {
         defaultKeys(s, sketch);
 
-        if (s.keyCode === s.ESCAPE) {
+        if (s.keyCode === s.ESCAPE || s.key === "q") {
             settings.toggleVisibility();
         }
     };
