@@ -55,6 +55,7 @@ const sketch = (s: p5SVG) => {
                 drawWindow(x + coord.x, y + coord.y, dims.x, dims.y);
             }
         }
+
         // Size / Displacement functions
         function constant(x: number, y: number) {
             return (i: number) => {
@@ -68,7 +69,11 @@ const sketch = (s: p5SVG) => {
             };
         }
 
-
+        function sine(x: number, y: number) {
+            return (i: number) => {
+                return new Point(s.sin(i * x) * 100, s.cos(i * y) * 50);
+            };
+        }
 
         s.background(q.background);
         s.fill(q.background);
@@ -83,7 +88,7 @@ const sketch = (s: p5SVG) => {
                 s.stroke("#00ffe1");
             }
 
-            drawCascadingWindows(q.xDisplacement + coords.x, q.yDisplacement + coords.y, q.numWindows, linear(10, 10), constant(100, 200));
+            drawCascadingWindows(q.xDisplacement + coords.x, q.yDisplacement + coords.y, q.numWindows, sine(1, 10), constant(100, 200));
         });
 
 
