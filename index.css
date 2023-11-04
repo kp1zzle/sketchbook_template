@@ -1,0 +1,81 @@
+@font-face {
+  font-family: RobotoMono-Regular;
+  src: url(RobotoMono-Regular.ttf);
+}
+
+@font-face {
+  font-family: RobotoMono-SemiBold;
+  src: url(RobotoMono-SemiBold.ttf);
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  width: 100vw;
+  height: 100vh;
+  /*overflow: hidden;*/
+  overflow-x: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  font-family: RobotoMono-Regular, andale mono, monospace;
+  text-align: center;
+}
+
+br {
+  line-height: 200%;
+}
+
+a {
+  all: unset;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  font-family: RobotoMono-Regular, andale mono, monospace;
+  text-align: left;
+}
+
+a:hover {
+  outline-style: solid;
+  outline-width: thin;
+}
+
+a:active {
+  background: linear-gradient(to bottom right, #fd9200, #bc43ff);
+  /*-webkit-background-clip: text;*/
+  /*-webkit-text-fill-color: transparent;*/
+  color: black;
+  outline-style: none;
+}
+
+.date {
+  display: inline;
+  padding-left: 15px;
+}
+
+.backButton{
+  position: absolute;
+  left:15px;
+  top:10px;
+  font-size: 1.8em;
+}
+
+h1 {
+  font-family: RobotoMono-Regular, andale mono, monospace;
+  font-size: 4em;
+  color: black;
+  background: linear-gradient(to bottom left, #00c722, #2e22ff);
+  display: inline;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    /*noinspection CssInvalidPropertyValue*/
+    height: -webkit-fill-available;
+  }
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
